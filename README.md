@@ -16,6 +16,7 @@ Welcome to my personal website, which is built with React, Bootstrap, and Three.
 - OpenWeatherMap API
 
 ## Project Structure
+```
 public/
 ├── assets/
 ├── models/    # 3D models
@@ -36,3 +37,4 @@ src/
 ├── App.jsx
 ├── App.css
 └── index.js
+```
