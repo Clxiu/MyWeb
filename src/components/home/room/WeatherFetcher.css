@@ -1,0 +1,130 @@
+.weather-widget {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 220px;
+    padding: 16px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: #000;
+    font-family: "Segoe UI", sans-serif;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark mode */
+body.dark-mode .weather-widget {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.weather-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.temp-icon {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.temp-icon .icon {
+    font-size: 1.5rem;
+    margin-right: 8px;
+}
+
+.temp-icon .temp {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.condition {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
+.weather-form {
+    display: flex;
+    margin-top: 10px;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+.weather-form input {
+    flex: 1;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #333;
+    min-width: 0;
+}
+
+/* Dark mode input */
+body.dark-mode .weather-form input {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.weather-form button {
+    background-color: #6accc7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.weather-form button:hover {
+    background-color: #0e4345;
+}
+
+.dark-mode .weather-form button {
+    background-color: #0e4345;
+}
+
+.dark-mode .weather-form button:hover {
+    background-color: #6accc7;
+}
+
+.weather-widget p {
+    color: #000000;
+}
+
+.dark-mode .weather-widget p {
+    color: #ffffff;
+}
+
+.weather-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.weather-actions button {
+    background-color: #6accc7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.weather-actions button:hover {
+    background-color: #0e4345;
+}
+
+.dark-mode .weather-actions button {
+    background-color: #0e4345;
+    color: #ffffff;
+}
+
+.dark-mode .weather-actions button:hover {
+    background-color: #6accc7;
+}

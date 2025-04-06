@@ -1,0 +1,69 @@
+.cover-game {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.game-container {
+    position: relative;
+    width: 80%;
+    height: 40vh;
+}
+
+.mystery-box {
+    position: absolute;
+    width: 7vh;
+    height: 7vh;
+    background: url("../assets/question-box.png") no-repeat center;
+    background-size: contain;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    transition: transform 0.1s linear;
+}
+
+.box-jump {
+    animation: boxBounce 0.3s ease-in-out;
+}
+
+@keyframes boxBounce {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-2vh);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.mario {
+    position: absolute;
+    width: 10vh;
+    height: 10vh;
+    background: url("../assets/mario.gif") no-repeat center;
+    background-size: contain;
+    bottom: 5vh;
+    transition: left 0.1s linear;
+}
+
+.jump {
+    animation: jump 0.5s ease-out;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
