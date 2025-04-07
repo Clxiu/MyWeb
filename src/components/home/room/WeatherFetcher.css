@@ -1,9 +1,10 @@
 .weather-widget {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 220px;
-    padding: 16px;
+    bottom: 12vh;
+    right: 1.5vw;
+    width: 26vw;
+    min-width: 210px;
+    padding: min(1.5vw, 16px);
     border-radius: 16px;
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
