@@ -8,6 +8,88 @@
     position: relative;
 }
 
+.skip-btn {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    z-index: 99;
+}
+
+.skip-btn button {
+    padding: 10px 20px;
+    background: #125659;
+    color: white;
+    border-radius: 15px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1rem;
+}
+
+.skip-btn button:hover {
+    background: #6accc7;
+    transform: scale(1.1);
+}
+
+.game-hint {
+    position: absolute;
+    bottom: 2vh;
+    width: 100%;
+    text-align: center;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    z-index: 10;
+
+    animation: blinkAnimation 3s ease-in-out infinite;
+}
+
+@keyframes blinkAnimation {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.mobile-controls {
+    position: absolute;
+    bottom: 12vh;
+    left: 4vw;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    z-index: 10;
+}
+
+.mobile-controls button {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #125659;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+    opacity: 0.3;
+}
+
+.mobile-controls button:hover {
+    background-color: rgba(106, 204, 199, 0.3);
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.mobile-controls svg {
+    width: 32px;
+    height: 32px;
+}
+
+.up-btn {
+    margin-top: -7vh;
+}
+
 .game-container {
     position: relative;
     width: 80%;

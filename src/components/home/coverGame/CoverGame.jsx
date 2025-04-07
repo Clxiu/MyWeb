@@ -3,7 +3,7 @@ import "./CoverGame.css";
 
 const CoverGame = ({onGameComplete}) => {
     const [marioPosition, setMarioPosition] = useState(10);
-    const [stepSize, setStepSize] = useState(1.5);
+    const [stepSize, setStepSize] = useState(1);
     const [jumping, setJumping] = useState(false);
     // box bouncing state
     const [boxJumping, setBoxJumping] = useState(false);
@@ -69,6 +69,33 @@ const CoverGame = ({onGameComplete}) => {
         };
     }, [stepSize]);
 
+    useEffect(() => {
+      let animationId;
+      let lastUpdateTime = performance.now();
+
+      const move = (time) => {
+        const delta = time - lastUpdateTime;
+
+        if (delta > 16) {
+          setMarioPosition((prev) => {
+            if (keys.current["ArrowRight"]) {
+              return Math.min(prev + stepSize, 90);
+            } else if (keys.current["ArrowLeft"]) {
+              return Math.max(prev - stepSize, 5);
+            }
+            return prev;
+          });
+          lastUpdateTime = time;
+        }
+
+        animationId = requestAnimationFrame(move);
+      };
+
+      animationId = requestAnimationFrame(move);
+      return () => cancelAnimationFrame(animationId);
+    }, [stepSize]);
+
+
     // player jump, collision with box
     useEffect(() => {
         const handleJump = (event) => {
@@ -111,8 +138,68 @@ const CoverGame = ({onGameComplete}) => {
         return () => window.removeEventListener("keydown", handleJump);
     }, [jumping, onGameComplete]);
 
+    const simulateKey = (key, pressed) => {
+        keys.current[key] = pressed;
+    };
+
     return (
         <div className="cover-game">
+            <div className="skip-btn">
+                <button onClick={onGameComplete}>SKIP</button>
+            </div>
+            <div className="game-hint">
+                <p>Use ← → to move, ↑ or space to jump</p>
+            </div>
+            <div className="mobile-controls">
+                <button
+                    onTouchStart={(e) => {
+                        simulateKey("ArrowLeft", true);
+                    }}
+                    onTouchEnd={(e) => {
+                        simulateKey("ArrowLeft", false);
+                    }}
+                    onMouseDown={() => simulateKey("ArrowLeft", true)}
+                    onMouseUp={() => simulateKey("ArrowLeft", false)}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#125659"
+                         className="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                    </svg>
+                </button>
+                <button className="up-btn"
+                    onTouchStart={(e) => {
+                        const evt = new KeyboardEvent("keydown", {key: "ArrowUp"});
+                        window.dispatchEvent(evt);
+                    }}
+                    onClick={() => {
+                        const evt = new KeyboardEvent("keydown", {key: "ArrowUp"});
+                        window.dispatchEvent(evt);
+                    }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#125659"
+                         className="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                    </svg>
+                </button>
+                <button
+                    onTouchStart={(e) => {
+                        simulateKey("ArrowRight", true);
+                    }}
+                    onTouchEnd={(e) => {
+                        simulateKey("ArrowRight", false);
+                    }}
+                    onMouseDown={() => simulateKey("ArrowRight", true)}
+                    onMouseUp={() => simulateKey("ArrowRight", false)}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#125659"
+                         className="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                </button>
+            </div>
             <div className="game-container" ref={gameContainerRef}>
                 <div className={`mystery-box ${boxJumping ? "box-jump" : ""}`}></div>
                 <div
