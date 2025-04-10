@@ -3,11 +3,11 @@ import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const About = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1100);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000);
     // listen to window size change
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 1100);
+            setIsMobile(window.innerWidth <= 1000);
         };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -15,7 +15,7 @@ const About = () => {
 
     const data = [
         {
-            title: "Who I Am And What I Do",
+            title: "Who I Am & What I Do",
             desc1: "Hello! I'm LingXiu, a software developer. My passion lies in crafting intuitive," +
                 " efficient, and impactful software solutions.",
             desc2: "I specialize in full-stack development and machine learning, with particular expertise in computer" +
@@ -33,16 +33,16 @@ const About = () => {
 
     return (
         <>
+            <div className="heading">
+                <h3>About Me</h3>
+                <h1>{data[0].title}</h1>
+            </div>
             {isMobile ? (
                 // small screen: use Carousel
                 <Carousel controls indicators interval={null}>
                     {/* slide 1 - text */}
                     <Carousel.Item>
                         <div className="carousel-content about-text">
-                            <div className="heading">
-                                <h3>About Me</h3>
-                                <h1>{data[0].title}</h1>
-                            </div>
                             <p>{data[0].desc1}</p>
                             <p>{data[0].desc2}</p>
                             <p>{data[0].desc3}</p>
@@ -65,10 +65,6 @@ const About = () => {
                 // big screen: left + right
                 <div className="about-container">
                     <div className="about-left">
-                        <div className="heading">
-                            <h3>About Me</h3>
-                            <h1>{data[0].title}</h1>
-                        </div>
                         <p>{data[0].desc1}</p>
                         <p>{data[0].desc2}</p>
                         <p>{data[0].desc3}</p>

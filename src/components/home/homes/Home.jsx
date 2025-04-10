@@ -2,11 +2,10 @@ import {React, useEffect, useState} from "react"
 import RoomScene from "../room/RoomScene";
 import WeatherFetcher from "../room/WeatherFetcher";
 import "../room/Room.css";
-import Carousel from "react-bootstrap/Carousel";
 
 const Home = () => {
     const [weather, setWeather] = useState("clouds");
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1100);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 850);
 
     useEffect(() => {
         // prevent resume scrolling
@@ -21,7 +20,7 @@ const Home = () => {
     const scrollToMore = () => {
         const next = document.getElementById("more-item");
         if (next) {
-            const offset = 0.2 * window.innerHeight;
+            const offset = 0.1 * window.innerHeight;
             const top = next.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({top, behavior: "smooth"});
         }
@@ -30,7 +29,7 @@ const Home = () => {
     // listen to window size change
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 1100);
+            setIsMobile(window.innerWidth <= 850);
         };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -69,46 +68,42 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="home" id="more-item">
-                {isMobile ? (
-                    <>
-                        <h1 style={{textAlign: "center", fontSize: "min(10vw, 50px)", marginTop: "50px"}}>
+            {isMobile ? (
+                <section className="home" id="more-item" style={{height: "auto"}}>
+                    <div className="mobile-home-container">
+                        <h1 className="mobile-title">
                             I AM A <br/> DEVELOPER
                         </h1>
-                        <Carousel controls indicators interval={null} style={{marginTop: "max(-50px, -5vh)"}}>
-                            {/* slide 1 - text */}
-                            <Carousel.Item>
-                                <div className="carousel-content about-text" style={{padding: "10px"}}>
-                                    <div className="socialIcon">
-                                        <a href="https://github.com/Clxiu" target="_blank" rel="noreferrer"><i
-                                            className="fab fa-github github"></i></a>
-                                        <a href="https://facebook.com/lingxiu.cai.1" target="_blank" rel="noreferrer"><i
-                                            className="fab fa-facebook-f facebook"></i></a>
-                                        <a href="https://www.linkedin.com/in/lingxiu-cai-67a2291b3/" target="_blank"
-                                           rel="noreferrer"><i className="fab fa-linkedin linkedin"></i></a>
-                                        <a href="https://discordapp.com/users/linn_710" target="_blank"
-                                           rel="noreferrer"><i className="fab fa-discord discord"></i></a>
-                                    </div>
-                                    <p className="selfIntro" style={{fontSize: "2.5vh", lineHeight: "4vh"}}>
-                                        Hello, I'm LingXiu, a software developer with a Master's degree in Machine
-                                        Learning and Computer Vision from the Australian National University. My
-                                        technical stack includes Python, JavaScript, C#, and Java, and I'm experienced
-                                        in both front-end and back-end development. I enjoy creating responsive,
-                                        intuitive, and efficient software solutions.
-                                    </p>
-                                    <button className='primary-btn' style={{fontSize: "2.5vh"}}>Contact Me</button>
-                                </div>
-                            </Carousel.Item>
-
-                            {/* slide 2 - image */}
-                            <Carousel.Item>
-                                <div className="carousel-content about-image">
-                                    <img src="/assets/home.PNG" alt="" className="about-img d-block w-100"/>
-                                </div>
-                            </Carousel.Item>
-                        </Carousel>
-                    </>
-                ) : (
+                        <div className="mobile-about-text">
+                            <div className="socialIcon">
+                                <a href="https://github.com/Clxiu" target="_blank" rel="noreferrer"><i
+                                    className="fab fa-github github"></i></a>
+                                <a href="https://facebook.com/lingxiu.cai.1" target="_blank" rel="noreferrer"><i
+                                    className="fab fa-facebook-f facebook"></i></a>
+                                <a href="https://www.linkedin.com/in/lingxiu-cai-67a2291b3/" target="_blank"
+                                   rel="noreferrer"><i className="fab fa-linkedin linkedin"></i></a>
+                                <a href="https://discordapp.com/users/linn_710" target="_blank" rel="noreferrer"><i
+                                    className="fab fa-discord discord"></i></a>
+                            </div>
+                            <p className="selfIntro">
+                                Hello, I'm LingXiu, a software developer with a Master's degree in Machine
+                                Learning and Computer Vision from the Australian National University. My
+                                technical stack includes Python, JavaScript, C#, and Java, and I'm experienced
+                                in both front-end and back-end development. I enjoy creating responsive,
+                                intuitive, and efficient software solutions.
+                            </p>
+                            <button className='mobile-contact-btn primary-btn'>Contact Me</button>
+                        </div>
+                        <div className="mobile-about-image">
+                            <div className="circle-background">
+                                <img src="/assets/home.PNG" alt="Profile" className="profile-image"
+                                     style={{width: "300px", height: "auto", left: "50%"}}/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            ) : (
+                <section className="home" id="more-item">
                     <div className="home-container flex">
                         <div className="left">
                             <div className="img">
@@ -136,8 +131,8 @@ const Home = () => {
                             <button className='primary-btn'>Contact Me</button>
                         </div>
                     </div>
-                )}
-            </section>
+                </section>
+            )}
         </>
     )
 }
