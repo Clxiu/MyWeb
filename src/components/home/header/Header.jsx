@@ -45,7 +45,7 @@ const Header = () => {
             <Navbar expand="lg" className={darkMode ? "navbar-dark" : "navbar-light"}
                     style={{background: darkMode ? "#125659" : "#7de3de", color: darkMode ? "#ffffff" : "#000000"}}>
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/">
                         <img src="/assets/logo.png" alt="logo" width={80} height={80}/>
                         <span className={"big-shoulders"} style={{
                             fontSize: "1.5rem",
@@ -60,10 +60,10 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginRight: "50px"}}/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home"><Home
+                            <Nav.Link href="/"><Home
                                 sx={{color: getIconColor("#3b9c92", "#c9f4ef")}}/> Home</Nav.Link>
-                            <Nav.Link href="#about"><AutoStories
-                                sx={{color: getIconColor("#44c5c9", "#bef1f3")}}/> About</Nav.Link>
+                            <Nav.Link href="/background"><AutoStories
+                                sx={{color: getIconColor("#44c5c9", "#bef1f3")}}/> Background</Nav.Link>
                             <Nav.Link href="#projects"><Web sx={{color: getIconColor("#4aadd4", "#b8e3ff")}}/> Projects</Nav.Link>
                             <Nav.Link href="#contact"><ConnectWithoutContact
                                 sx={{color: getIconColor("#4a93d4", "#b3d8ff")}}/> Contact</Nav.Link>

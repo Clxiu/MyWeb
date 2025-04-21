@@ -1,8 +1,8 @@
 .weather-widget {
     position: absolute;
-    bottom: 12vh;
+    bottom: 11vh;
     right: 1.5vw;
-    width: 26vw;
+    width: 20vw;
     min-width: 210px;
     padding: min(1.5vw, 16px);
     border-radius: 16px;

@@ -1,6 +1,6 @@
 import React from "react"
 import Home from "../home/homes/Home"
-import Branding from "../home/Branding"
+import Branding from "../home/branding/Branding"
 import About from "../home/about/About"
 
 const HomePages = () => {
