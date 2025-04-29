@@ -447,6 +447,7 @@ button {
     align-items: flex-end;
     margin-top: 10px;
 }
+
 .profile-image {
     position: absolute;
     left: 50%;
@@ -468,6 +469,7 @@ button {
 .dark-mode .circle-background {
     background-color: rgba(106, 204, 199, 0.3);
 }
+
 /* branding */
 .grid {
     display: grid;

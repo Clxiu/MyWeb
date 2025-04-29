@@ -70,29 +70,29 @@ const CoverGame = ({onGameComplete}) => {
     }, [stepSize]);
 
     useEffect(() => {
-      let animationId;
-      let lastUpdateTime = performance.now();
+        let animationId;
+        let lastUpdateTime = performance.now();
 
-      const move = (time) => {
-        const delta = time - lastUpdateTime;
+        const move = (time) => {
+            const delta = time - lastUpdateTime;
 
-        if (delta > 16) {
-          setMarioPosition((prev) => {
-            if (keys.current["ArrowRight"]) {
-              return Math.min(prev + stepSize, 90);
-            } else if (keys.current["ArrowLeft"]) {
-              return Math.max(prev - stepSize, 5);
+            if (delta > 16) {
+                setMarioPosition((prev) => {
+                    if (keys.current["ArrowRight"]) {
+                        return Math.min(prev + stepSize, 90);
+                    } else if (keys.current["ArrowLeft"]) {
+                        return Math.max(prev - stepSize, 5);
+                    }
+                    return prev;
+                });
+                lastUpdateTime = time;
             }
-            return prev;
-          });
-          lastUpdateTime = time;
-        }
+
+            animationId = requestAnimationFrame(move);
+        };
 
         animationId = requestAnimationFrame(move);
-      };
-
-      animationId = requestAnimationFrame(move);
-      return () => cancelAnimationFrame(animationId);
+        return () => cancelAnimationFrame(animationId);
     }, [stepSize]);
 
 
@@ -168,14 +168,14 @@ const CoverGame = ({onGameComplete}) => {
                     </svg>
                 </button>
                 <button className="up-btn"
-                    onTouchStart={(e) => {
-                        const evt = new KeyboardEvent("keydown", {key: "ArrowUp"});
-                        window.dispatchEvent(evt);
-                    }}
-                    onClick={() => {
-                        const evt = new KeyboardEvent("keydown", {key: "ArrowUp"});
-                        window.dispatchEvent(evt);
-                    }}
+                        onTouchStart={(e) => {
+                            const evt = new KeyboardEvent("keydown", {key: "ArrowUp"});
+                            window.dispatchEvent(evt);
+                        }}
+                        onClick={() => {
+                            const evt = new KeyboardEvent("keydown", {key: "ArrowUp"});
+                            window.dispatchEvent(evt);
+                        }}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#125659"
                          className="bi bi-caret-up-fill" viewBox="0 0 16 16">

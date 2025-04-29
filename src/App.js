@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/home/header/Header";
 import HomePages from "./components/pageContent/HomePages";
 import CoverGame from "./components/home/coverGame/CoverGame";
+import BackgroundPages from "./components/pageContent/BackgroundPages";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(
@@ -44,13 +45,14 @@ const App = () => {
         <Router>
             {gameCompleted ? (
                 <>
-                    <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+                    <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
                     <Routes>
-                        <Route path="/" element={<HomePages />} />
+                        <Route path="/" element={<HomePages/>}/>
+                        <Route path="/background" element={<BackgroundPages darkMode={darkMode}/>}/>
                     </Routes>
                 </>
             ) : (
-                <CoverGame onGameComplete={handleGameComplete} />
+                <CoverGame onGameComplete={handleGameComplete}/>
             )}
         </Router>
     );
