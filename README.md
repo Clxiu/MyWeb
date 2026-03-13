@@ -1,5 +1,6 @@
 # Lingxiu's Personal Website
-Welcome to my personal website, which is built with React, Bootstrap, and Three.js. 
+Welcome to my personal [website](http://lingxdev.dev), which is built with React, Bootstrap, and Three.js. 
+
 
 ## Features
 - Fully interactive 3D room environment
